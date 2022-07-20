@@ -17,7 +17,7 @@ import 'animate.css'
 // 引入echarts
 import * as echarts from 'echarts'
 
-/* ------------挂载---------- */
+/* ------------挂---------- */
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
@@ -32,5 +32,5 @@ Vue.locale = () => {}
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount('#app')
