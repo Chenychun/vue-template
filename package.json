@@ -9,7 +9,6 @@
     "dev": "vue-cli-service build"
   },
   "dependencies": {
-    "animate.css": "^4.1.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "better-xlsx": "^0.7.4",
@@ -17,7 +16,6 @@
     "core-js": "^2.6.5",
     "echarts": "^5.1.2",
     "file-saver": "^2.0.2",
-    "hb-verify": "^1.0.0",
     "less-loader": "^6.0.0",
     "moment": "^2.24.0",
     "node-cmd": "^3.0.0",
@@ -25,7 +23,6 @@
     "qs": "^6.7.0",
     "scss": "^0.2.4",
     "style-resources-loader": "^1.4.1",
-    "vab-quill": "0.0.4",
     "view-design": "^4.6.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",

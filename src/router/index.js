@@ -5,29 +5,29 @@ import ViewUI from 'view-design'
 Vue.use(VueRouter)
 Vue.use(ViewUI)
 // 路由懒加载
+const HelloWorld = () => import('views/HelloWorld.vue')
 
 const routes = [
   {
     path: '/',
     redirect: 'HelloWorld',
     meta: '首页',
-    component: () => import('views/HelloWorld.vue')
+    component: HelloWorld
   },
   {
     path: '/HelloWorld',
     name: 'HelloWorld',
     meta: '首页',
-    component: () => import('views/HelloWorld.vue')
+    component: HelloWorld
   },
   {
     path: '/test',
     name: 'test',
-    meta: '首页',
+    meta: 'test',
     component: () => import('views/test.vue')
   }
 ]
 const router = new VueRouter({
-  mode: 'history',
   routes
 })
 

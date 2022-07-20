@@ -19,6 +19,7 @@ export default {
     }
   },
   mounted() {
+    console.log(window.appsettings)
   },
   methods: {
     // 重新加载页面
@@ -33,5 +34,8 @@ export default {
 }
 </script>
 <style lang="scss" >
+#app{
+   background: $Nav-style;
+}
 
 </style>

@@ -1,8 +1,32 @@
-
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-empty */
+/* eslint-disable no-useless-escape */
+import ViewUI from 'view-design'
 export default {
   // 深度拷贝
   deepCopy: function(obj) {
     return JSON.parse(JSON.stringify(obj))
+  },
+  // Loading状态开始
+  spinShow: function() {
+    ViewUI.Spin.show({
+      render: h => {
+        return h('div', [
+          h('Icon', {
+            class: 'demo-spin-icon-load',
+            props: {
+              type: 'ios-loading',
+              size: 18
+            }
+          }),
+          h('div', 'Loading')
+        ])
+      }
+    })
+  },
+  // Loading状态结束
+  spinHide: function() {
+    ViewUI.Spin.hide()
   },
   // 获取当前日期字符串
   getNowTimeString(date) {
@@ -27,7 +51,7 @@ export default {
     )
   },
   // 含样式导出Excel
-  exportToExcel(filename) {
+  Download(filename) {
     var oHtml = document.getElementsByClassName('tableA')[0].outerHTML
     console.log(document.getElementsByClassName('tableA'))
 
@@ -61,7 +85,7 @@ export default {
     }
   },
   // 保留当前窗口，另打开地址栏新窗口
-  openWindow(url, type) {
+  openWindow: function(url, type, name) {
     if (type === 1) {
       return window.open(
         url,
@@ -95,7 +119,7 @@ export default {
       } else {
         window.open(url, '', OPENWINDOW_NO_MENU_800).focus()
       }
-    } catch (ex) { console.log(ex) }
+    } catch (ex) {}
   },
   // 获取当前浏览器
   getBrowserVersion: function() {
@@ -123,11 +147,11 @@ export default {
     } // 判断是否IE浏览器
   },
   // 正则取URL上的键值对
-  getQueryString: function(location, value) {
+  getQueryString: function(href, value) {
     const reg = new RegExp('(^|&)' + value + '=([^&]*)(&|$)')
     const r =
-      location.search.substr(1).match(reg) ||
-      location.hash.substring(location.hash.search(/\?/) + 1).match(reg)
+    href.search.substr(1).match(reg) ||
+    href.hash.substring(href.hash.search(/\?/) + 1).match(reg)
     if (r != null) {
       return decodeURIComponent(r[2])
     }
@@ -181,12 +205,7 @@ export default {
       }
     })
   },
-
-  /**
-   * base64转文件下载
-   * @param {*} fileByte 文件流
-   * @param {*} fileName 文件名称
-   */
+  // base64转文件下载
   base64ToFile(fileByte, fileName) {
     // 下载文件
     var bstr = atob(fileByte)
@@ -208,26 +227,5 @@ export default {
       document.body.removeChild(downloadElement)
       window.URL.revokeObjectURL(href)
     }
-  },
-  /**
-   * @description url字符串转对象
-   * @param {*} url
-   */
-  param2Obj(url) {
-    const search = decodeURIComponent(url.split('?')[1]).replace(/\+/g, ' ')
-    if (!search) {
-      return {}
-    }
-    const obj = {}
-    const searchArr = search.split('&')
-    searchArr.forEach(v => {
-      const index = v.indexOf('=')
-      if (index !== -1) {
-        const name = v.substring(0, index)
-        const val = v.substring(index + 1, v.length)
-        obj[name] = val
-      }
-    })
-    return obj
   }
 }

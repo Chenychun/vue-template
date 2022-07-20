@@ -11,19 +11,16 @@ import Vuex from 'vuex'
 import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 import util from './utils'
-import Vab from './utils/vab'
-import './styles/index.scss'
-import 'animate.css'
+import './styles/common.scss'
 // 引入echarts
 import * as echarts from 'echarts'
 
-/* ------------挂---------- */
+/* ------------挂载---------- */
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.use(Vuex) // 注入 Vuex
 Vue.use(ViewUI)
-Vue.use(Vab)
 Vue.prototype.$moment = moment
 Vue.prototype.$util = util
 Vue.prototype.$BAIDU_URL = process.env.VUE_APP_BAIDU_URL
@@ -32,5 +29,5 @@ Vue.locale = () => {}
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount('#app')

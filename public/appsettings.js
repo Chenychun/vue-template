@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const dev = {
-  baseUrl: ''
+  baseUrl: 'http://cn111001546.corpnet.auo.com/Form105WebAPI'
 }
 // eslint-disable-next-line no-unused-vars
 const test = {

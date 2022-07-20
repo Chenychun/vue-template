@@ -1,34 +1,56 @@
 <template>
-  <div class="container-fluid">
-    test
+  <div class="g-container">
+    <div class="g-middle"><div class="g-middle-inner">middle</div></div>
+    <div class="g-left">left</div>
+    <div class="g-right">right</div>
   </div>
 </template>
-<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <script>
 export default {
   data() {
-    return {
-      form: {}
-    }
+    return {}
   },
-  mounted() {
-    var lastId = ''
-    $('#captcha').sliderCaptcha({
-      repeatIcon: 'fa fa-redo',
-      setSrc: function() {
-        var ids = [10, 237, 626, 643, 796, 173, 501]
-        if (lastId) ids.splice(ids.indexOf(lastId), 1)
-        var rand = Math.floor(Math.random() * ids.length)
-        var id = ids[rand]
-        lastId = id
-        return 'https://www.huiborobot.com.cn:3183/static/valid/imgs/' + id + '-288x155.jpg'
-      },
-      onSuccess: function() {
-        alert('验证通过!')
-      }
-    })
-  },
+  mounted() {},
   methods: {}
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.g-container {
+  position: relative;
+  height: 100vh;
+  min-width: 400px;
+
+  & > div {
+    height: 100vh;
+    float: left;
+    text-align: center;
+    color: #fff;
+    line-height: 100vh;
+    font-size: 3vw;
+  }
+}
+
+.g-middle {
+  position: relative;
+  width: 100%;
+  background: #cc6630;
+
+  .g-middle-inner {
+    margin: 0 200px;
+  }
+}
+
+.g-left {
+  position: relative;
+  width: 200px;
+  background: #ffcc00;
+  margin-left: -100%;
+}
+
+.g-right {
+  position: relative;
+  width: 200px;
+  background: pink;
+  margin-left: -200px;
+}
+</style>

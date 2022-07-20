@@ -4,7 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin') // 去除打印
 const CompressionPlugin = require('compression-webpack-plugin') // 开启gizp压缩
 const { openGzip } = require('./package.json')
 const version = new Date().getTime()
-// 全局添加共有颜色变量配置
+//全局添加共有颜色变量配置
 function addStyleResource(rule) {
   rule
     .use('style-resource')
@@ -25,7 +25,9 @@ module.exports = {
       .set('assets', resolve('src/assets'))
       .set('common', resolve('src/common'))
     const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
-    types.forEach(type => addStyleResource(config.module.rule('scss').oneOf(type)))
+    types.forEach(type =>
+      addStyleResource(config.module.rule('scss').oneOf(type))
+    )
   },
 
   configureWebpack: config => {
@@ -45,7 +47,9 @@ module.exports = {
             vendor: {
               test: /[\\/]node_modules[\\/]/,
               name(module) {
-                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+                const packageName = module.context.match(
+                  /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+                )[1]
                 // npm package names are URL-safe, but some servers don't like @ symbols
                 return `npm.${packageName.replace('@', '')}`
               }
@@ -99,15 +103,10 @@ module.exports = {
   productionSourceMap: false,
   // 跨域请求
   devServer: {
-    port: 9527,
+    port: 8090,
     disableHostCheck: true,
-    https: false, // 启用https
-    open: true,
-    overlay: {
-      warnings: false,
-      errors: true
-    },
+    https: false // 启用https
     // 跨域代理
-    proxy: 'https://api.juejin.cn'
+    // proxy: baseUrl
   }
 }
